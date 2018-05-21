@@ -173,9 +173,9 @@ def check_random_resource(resource_list, resource_type):
 def send_to_cloudwatch(status):
     publisher_id = get_instance_tag('PairInstanceId')
     cw = boto3.client('cloudwatch', region_name=region)
-    namespace = get_instance_tag('aws:cloudformation:stack-name')
+    namespace = 'AEM'
     name = 'contentHealthCheck'
-    dimensions = [{'Name': 'PairInstanceId','Value': publisher_id}]
+    dimensions = [{'Name': 'PairInstanceId','Value': publisher_id},{'Name': 'StackPrefix','Value': '<%= $stack_prefix %>'}]
     metric_data = { 'MetricName': name, 'Dimensions': dimensions, 'Value': status, 'Unit': 'Count' }
     try:
         cw_response = cw.put_metric_data(Namespace=namespace, MetricData=[ metric_data ])
