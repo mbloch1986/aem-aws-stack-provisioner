@@ -1,5 +1,5 @@
 ### 2.8.1
-*
+* Renamed Consolidated offline-snapshot & offline-compaction-snapshot scripts shinesolutions/aem-aws-stack-builder#182
 
 ### 2.8.0
 * Disable package management for simianarmy shinesolutions/puppet-simianarmy#6
